@@ -1,0 +1,33 @@
+//Constructing
+var Car = function() {
+    console.log('Assemble: build frame, add core parts');
+};
+ 
+Car.prototype = {
+    start: function() {
+        console.log('The engine starts with roar!');
+    },
+    drive: function() {
+        console.log('Away we go!');
+    },
+    getPrice: function() {
+        return 11000.00;
+    }
+};
+
+//Decorating
+var CarDecorator = function(car) {
+    this.car = car;
+};
+ 
+CarDecorator.prototype = {
+    start: function() {
+        this.car.start();
+    },
+    drive: function() {
+        this.car.drive();
+    },
+    getPrice: function() {
+        return this.car.getPrice();
+    }
+};
