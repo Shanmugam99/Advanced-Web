@@ -1,17 +1,17 @@
 //Constructing
 var Car = function() {
-    console.log('Assemble: build frame, add core parts');
+    console.log('Building frame, adding core parts');
 };
  
 Car.prototype = {
     start: function() {
-        console.log('The engine starts with roar!');
+        console.log('Engine starts');
     },
     drive: function() {
-        console.log('Away we go!');
+        console.log('Faster than walking');
     },
     getPrice: function() {
-        return 11000.00;
+        return 10000.00;
     }
 };
 
@@ -28,27 +28,27 @@ CarDecorator.prototype = {
         this.car.drive();
     },
     getPrice: function() {
-        this.car.getPrice();
+        return this.car.getPrice();
     }
 };
 
 //Decorator details
 var AcDecorator = function(car) {
     CarDecorator.call(this, car);
-    console.log('Assemble: add A/C unit');
+    console.log('Adding A/C');
 };
 AcDecorator.prototype = new CarDecorator();
 AcDecorator.prototype.start = function() {
     this.car.start();
-    console.log('The cool air starts blowing.');
+    console.log('The car has A/C');
 };
 AcDecorator.prototype.getPrice = function() {
-    return this.car.getPrice() + 600;
+    return this.car.getPrice() + 500;
 };
 
 var PowerSteeringsDecorator = function(car) {
     CarDecorator.call(this, car);
-    console.log('Assemble: add power steering');
+    console.log('Adding power steering');
 };
 PowerSteeringDecorator.prototype = new CarDecorator();
 PowerSteeringDecorator.prototype.drive = function() {
@@ -56,15 +56,23 @@ PowerSteeringDecorator.prototype.drive = function() {
     console.log('The car has power steering');
 };
 PowerSteeringDecorator.prototype.getPrice = function() {
-    return this.car.getPrice() + 100;
+    return this.car.getPrice() + 200;
 };
  
 var PowerWindowsDecorator = function(car) {
     CarDecorator.call(this, car);
-    console.log('Assemble: add power windows');
+    console.log('Adding power windows');
 };
 PowerWindowsDecorator.prototype = new CarDecorator();
 PowerWindowsDecorator.prototype.getPrice = function() {
     return this.car.getPrice() + 200;
+    console.log('The car has power windows');
 };
  
+//Initiliazing
+var car = new Car();    
+car = new PowerWindowDecorator(car);   
+car = new PowerSteeringDecorator(car);     
+car = new AcDecorator(car);            
+car.start(); 
+car.drive(); 
