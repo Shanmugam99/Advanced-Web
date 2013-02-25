@@ -15,7 +15,7 @@ Car.prototype = {
     }
 };
 
-//Decorating
+//Initial Decorator
 var CarDecorator = function(car) {
     this.car = car;
 };
@@ -28,6 +28,43 @@ CarDecorator.prototype = {
         this.car.drive();
     },
     getPrice: function() {
-        return this.car.getPrice();
+        this.car.getPrice();
     }
 };
+
+//Decorator details
+var AcDecorator = function(car) {
+    CarDecorator.call(this, car);
+    console.log('Assemble: add A/C unit');
+};
+AcDecorator.prototype = new CarDecorator();
+AcDecorator.prototype.start = function() {
+    this.car.start();
+    console.log('The cool air starts blowing.');
+};
+AcDecorator.prototype.getPrice = function() {
+    return this.car.getPrice() + 600;
+};
+
+var PowerSteeringsDecorator = function(car) {
+    CarDecorator.call(this, car);
+    console.log('Assemble: add power steering');
+};
+PowerSteeringDecorator.prototype = new CarDecorator();
+PowerSteeringDecorator.prototype.drive = function() {
+    this.car.drive();
+    console.log('The car has power steering');
+};
+PowerSteeringDecorator.prototype.getPrice = function() {
+    return this.car.getPrice() + 100;
+};
+ 
+var PowerWindowsDecorator = function(car) {
+    CarDecorator.call(this, car);
+    console.log('Assemble: add power windows');
+};
+PowerWindowsDecorator.prototype = new CarDecorator();
+PowerWindowsDecorator.prototype.getPrice = function() {
+    return this.car.getPrice() + 200;
+};
+ 
