@@ -17,6 +17,7 @@
 <canvas> used to define a canvas area that allows for graphic applications </canvas>
 
 //new application-focused tags
+
 <meter> measurement within a determined range of disk usage, relevance of a query result, or fraction of votes </meter>
 <progress> measurement for completion of a task </progress>
 <time> encodes modern dates and times in a gregorian calendar format </time>
