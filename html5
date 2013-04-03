@@ -1,1 +1,25 @@
-//html5
+//new structural tags
+
+<section> used to outline the webpage</section>
+<article> self-contained composition thats independently reusable</article>
+<aside> seperate from the content, like quotes and ads</aside>
+<header> wraps the sections table of contents</header>
+<hgroup> represents heading pf section </hroup>
+<footer> about the section </footer>
+<nav> section with navigation links </nav>
+
+//new content tags
+
+<figure> used to group visual content </figure>
+<video> media element with video data </video>
+<audio> audio element with audio data </audio>
+<embed> used to integrate non-HTML interactive content, flash </embed>
+<canvas> used to define a canvas area that allows for graphic applications </canvas>
+
+//new application-focused tags
+<meter> measurement within a determined range of disk usage, relevance of a query result, or fraction of votes </meter>
+<progress> measurement for completion of a task </progress>
+<time> encodes modern dates and times in a gregorian calendar format </time>
+<details> provides additional summary thats not supported by most browsers </details>
+<command> used for panels or icons </command>
+<menu> list of commands used for a menu </menu>
