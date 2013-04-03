@@ -4,9 +4,11 @@
 <article> self-contained composition thats independently reusable</article>
 <aside> seperate from the content, like quotes and ads</aside>
 <header> wraps the sections table of contents</header>
-<hgroup> represents heading pf section </hroup>
+<hgroup> represents heading of section by grouping all related headings </hroup>
 <footer> about the section </footer>
-<nav> section with navigation links </nav>
+<nav> section with many navigational links </nav>
+//only use section and article tags when sectioning content is appropiate
+//only use aside tag for related content
 
 //new content tags
 
@@ -24,3 +26,22 @@
 <details> provides additional summary thats not supported by most browsers </details>
 <command> used for panels or icons </command>
 <menu> list of commands used for a menu </menu>
+
+//deprecated tags include: basefont, big, center, font, s strike, tt, u,
+frame, acronym,dir, applet, rev, charset,longdesc, name, version, abbr, 
+scope, align, bgcolor, background,height, width, valign, border, cell padding
+
+//doctype declarations
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html xmlns="http://www.google.com">
+
+//additional notes
+<input type="email, url, date, file, month, number, telephone, time, or week"> 
+<input autofocus> firefox does not support
+<input autocomplete> autocompletes input type
+<input placeholder> lets you know input specifics in blank space
+<input required> doesnt allow form completion until required type is submitted
+
+
+
