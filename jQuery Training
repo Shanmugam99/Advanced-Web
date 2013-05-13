@@ -1,2 +1,84 @@
-//Starting CodeAcademy
-//Then finishing with Lynda
+jQuery = window.jQuery = window.$ = function(selector, context) {
+        ///  <summary>
+        ///		1: $(expression, context) - This function accepts a string containing a CSS selector which is then used to match a set of elements.
+        ///		2: $(html) - Create DOM elements on-the-fly from the provided String of raw HTML.
+        ///		3: $(elements) - Wrap jQuery functionality around a single or multiple DOM Element(s).
+        ///		4: $(callback) - A shorthand for $(document).ready().
+        ///	</summary>
+        ///	<param name="selector" type="String">
+        ///		1: expression - An expression to search with.
+        ///		2: html - A string of HTML to create on the fly.
+        ///		3: elements - DOM element(s) to be encapsulated by a jQuery object.
+        ///		4: callback - The function to execute when the DOM is ready.
+        ///	</param>
+        ///	<param name="context" type="jQuery">
+        ///		1: context - A DOM Element, Document or jQuery to use as context.
+        ///	</param>
+        /// <field name="selector" Type="Object">
+        ///     The DOM node context originally passed to jQuery() (if none was passed then context will be equal to the document).
+        /// </field>
+        /// <field name="context" Type="String">
+        ///     A selector representing selector originally passed to jQuery().
+        /// </field>
+        ///	<returns type="jQuery" />
+	
+		// The jQuery object is actually just the init constructor 'enhanced'
+		return new jQuery.fn.init( selector, context );
+	},
+
+jQuery.fn = jQuery.prototype = {
+	init: function( selector, context ) {
+		///	<summary>
+		///		1: $(expression, context) - This function accepts a string containing a CSS selector which is then used to match a set of elements.
+		///		2: $(html) - Create DOM elements on-the-fly from the provided String of raw HTML.
+		///		3: $(elements) - Wrap jQuery functionality around a single or multiple DOM Element(s).
+		///		4: $(callback) - A shorthand for $(document).ready().
+		///	</summary>
+		///	<param name="selector" type="String">
+		///		1: expression - An expression to search with.
+		///		2: html - A string of HTML to create on the fly.
+		///		3: elements - DOM element(s) to be encapsulated by a jQuery object.
+		///		4: callback - The function to execute when the DOM is ready.
+		///	</param>
+		///	<param name="context" type="jQuery">
+		///		1: context - A DOM Element, Document or jQuery to use as context.
+		///	</param>
+		///	<returns type="jQuery" />
+
+		// Make sure that a selection was provided
+		selector = selector || document;
+
+		// Handle $(DOMElement)
+		if ( selector.nodeType ) {
+			this[0] = selector;
+			this.length = 1;
+			this.context = selector;
+			return this;
+		}
+		// Handle HTML strings
+		if (typeof selector === "string") {
+		    // Are we dealing with HTML string or an ID?
+		    var match = quickExpr.exec(selector);
+
+		    // Verify a match, and that no context was specified for #id
+		    if (match && (match[1] || !context)) {
+
+		        // HANDLE: $(html) -> $(array)
+		        if (match[1])
+		            selector = jQuery.clean([match[1]], context);
+
+		        // HANDLE: $("#id")
+		        else {
+		            var elem = document.getElementById(match[3]);
+
+		            // Handle the case where IE and Opera return items
+		            // by name instead of ID
+		            if (elem && elem.id != match[3])
+		                return jQuery().find(selector);
+
+		            // Otherwise, we inject the element directly into the jQuery object
+		            var ret = jQuery(elem || []);
+		            ret.context = document;
+		            ret.selector = selector;
+		            return ret;
+		        }
